@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { assets } from '../assets/assets';
 import { Link, NavLink } from 'react-router-dom';
+import { ShopContext } from '../context/ShopContext';
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
+
+  const {setShowSearch, getCartCount } = useContext(ShopContext);
 
   return (
     <div className="flex items-center justify-between py-5 font-medium">
@@ -29,7 +32,7 @@ const Navbar = () => {
 
       <div className="flex items-center gap-6">
         {/* Search Icon */}
-        <img src={assets.search_icon} className="w-5 cursor-pointer" alt="" />
+        <img onClick={()=>setShowSearch(true)} src={assets.search_icon} className="w-5 cursor-pointer" alt="" />
 
         {/* Profile and Cart Icons */}
         <div className="flex items-center gap-6">
@@ -50,8 +53,8 @@ const Navbar = () => {
             <img src={assets.cart_icon} className="w-5 min-w-5" alt="" />
             {/* Badge for cart items */}
             <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]">
-              10 {/* Replace with dynamic count */}
-            </p>
+  {getCartCount()}
+</p>
           </Link>
 
           {/* Mobile Menu Icon */}
