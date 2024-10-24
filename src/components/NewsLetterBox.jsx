@@ -7,7 +7,7 @@ const NewsLetterBox = () => {
     }
   return (
     <div className='text-center'>
-        <p className='text-2xl font-medium text-gray-800'>Subscribe Now and get 20% off</p>
+        <p className='text-2xl font-medium text-gray-800'>Subscribe Now and get ?? off</p>
         <p className='text-gray-400 mt-3'>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
         </p>
