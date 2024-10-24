@@ -103,18 +103,128 @@
 
 
 
+// import { createContext, useEffect, useState } from "react";
+// import { products } from "../assets/assets";
+// import { toast } from "react-toastify";
+// import { search } from "../components/SearchBar"
+
+// export const ShopContext = createContext();
+
+// const ShopContextProvider = ({ children }) => {
+//     const currency = '$';
+//     const deliveryFee = 10; // Use camelCase for variable names
+//     const [search, setSearch] = useState('');
+//     const [showSearch, setShowSearch] = useState(true);
+//     const [cartItems, setCartItems] = useState({});
+
+
+//     const addToCart = async (itemId, size) => {
+//         if (!size) {
+//             toast.error('Please Select Product Size!!!!');
+//             return;
+//         }
+
+//         let CartData = structuredClone(cartItems);
+
+//         // Initialize item if it doesn't exist in cart
+//         if (!CartData[itemId]) {
+//             CartData[itemId] = {};
+//         }
+
+//         // Increment size count or set it to 1
+//         CartData[itemId][size] = (CartData[itemId][size] || 0) + 1;
+
+//         setCartItems(CartData);
+//     };
+
+//     const getCartCount = () => {
+//         let totalCount = 0;
+//         for (const items in cartItems) {
+//             for (const item in cartItems[items]) {
+//                 try {
+//                     if (cartItems[items][item] > 0) {
+//                         totalCount += cartItems[items][item]; 
+//                     }
+//                 } catch (error) {
+//                     // Consider logging the error or handling it
+//                 }
+//             }
+//         }
+//         return totalCount;
+//     };
+
+//     useEffect(() => {
+//         console.log(cartItems);
+//     }, [cartItems]);
+
+
+//     const updateQuantity = async (itemId, size, quantity) => {
+//         let cartData = structuredClone(cartItems);
+    
+//         if (quantity === 0) {
+//             delete cartData[itemId][size];
+//             if (Object.keys(cartData[itemId]).length === 0) {
+//                 delete cartData[itemId];
+//             }
+//         } else {
+//             cartData[itemId][size] = quantity;
+//         }
+    
+//         setCartItems(cartData);
+//     };
+
+//     const getCartAmount = () => {
+//         let totalAmount = 0;
+//         for (const items in cartItems) {
+//             let itemInfo = products.find((product) => product._id === items);
+//             for (const item in cartItems[items]) {
+//                 if (cartItems[items][item] > 0) {
+//                     totalAmount += itemInfo.price * cartItems[items][item];
+//                 }
+//             }
+//         }
+//         return totalAmount;
+//     };
+
+//     const value = {
+//         products,
+//         currency,
+//         deliveryFee,
+//         search,
+//         setSearch,
+//         showSearch,
+//         setShowSearch,
+//         cartItems,
+//         addToCart,
+//         getCartCount,
+//         updateQuantity,
+//         getCartAmount
+        
+//     };
+
+//     return (
+//         <ShopContext.Provider value={value}>
+//             {children}
+//         </ShopContext.Provider>
+//     );
+// };
+
+// export default ShopContextProvider;
+
+
+
 import { createContext, useEffect, useState } from "react";
 import { products } from "../assets/assets";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const ShopContext = createContext();
 
 const ShopContextProvider = ({ children }) => {
     const currency = '$';
-    const deliveryFee = 10; // Use camelCase for variable names
-    const [search, setSearch] = useState('');
-    const [showSearch, setShowSearch] = useState(true);
+    const deliveryFee = 10;
     const [cartItems, setCartItems] = useState({});
+    const navigate = useNavigate();
 
     const addToCart = async (itemId, size) => {
         if (!size) {
@@ -124,12 +234,10 @@ const ShopContextProvider = ({ children }) => {
 
         let CartData = structuredClone(cartItems);
 
-        // Initialize item if it doesn't exist in cart
         if (!CartData[itemId]) {
             CartData[itemId] = {};
         }
 
-        // Increment size count or set it to 1
         CartData[itemId][size] = (CartData[itemId][size] || 0) + 1;
 
         setCartItems(CartData);
@@ -139,16 +247,40 @@ const ShopContextProvider = ({ children }) => {
         let totalCount = 0;
         for (const items in cartItems) {
             for (const item in cartItems[items]) {
-                try {
-                    if (cartItems[items][item] > 0) {
-                        totalCount += cartItems[items][item]; 
-                    }
-                } catch (error) {
-                    // Consider logging the error or handling it
+                if (cartItems[items][item] > 0) {
+                    totalCount += cartItems[items][item];
                 }
             }
         }
         return totalCount;
+    };
+
+    const getCartAmount = () => {
+        let totalAmount = 0;
+        for (const items in cartItems) {
+            let itemInfo = products.find((product) => product._id === items);
+            for (const item in cartItems[items]) {
+                if (cartItems[items][item] > 0) {
+                    totalAmount += itemInfo.price * cartItems[items][item];
+                }
+            }
+        }
+        return totalAmount;
+    };
+
+    const updateQuantity = async (itemId, size, quantity) => {
+        let cartData = structuredClone(cartItems);
+
+        if (quantity === 0) {
+            delete cartData[itemId][size];
+            if (Object.keys(cartData[itemId]).length === 0) {
+                delete cartData[itemId];
+            }
+        } else {
+            cartData[itemId][size] = quantity;
+        }
+
+        setCartItems(cartData);
     };
 
     useEffect(() => {
@@ -159,13 +291,12 @@ const ShopContextProvider = ({ children }) => {
         products,
         currency,
         deliveryFee,
-        search,
-        setSearch,
-        showSearch,
-        setShowSearch,
         cartItems,
         addToCart,
         getCartCount,
+        updateQuantity,
+        getCartAmount,
+        navigate
     };
 
     return (
@@ -176,3 +307,4 @@ const ShopContextProvider = ({ children }) => {
 };
 
 export default ShopContextProvider;
+
