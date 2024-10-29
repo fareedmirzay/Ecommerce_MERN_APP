@@ -4,10 +4,6 @@ import Title from './Title'
 import Collection from '../pages/Collection'
 import ProductItem from './ProductItem'
 
-
-//change to renader different products
-
-
 const LatestCollection = () => {
     const { products } = useContext(ShopContext)
     // console.log(products);

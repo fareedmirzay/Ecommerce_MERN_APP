@@ -15,7 +15,7 @@ const BestSeller = () => {
         const bestProduct = products.filter((item) => item.bestSeller);
         console.log(bestProduct);  // Check the filtered best sellers
         setBestSeller(bestProduct.slice(0, 5));
-    }, [products]);  // Add products as a dependency to rerun when products change
+    }, [products]); 
   return (
     <div className='my-10'>
         <div className='text-center text-3xl py-8'>
