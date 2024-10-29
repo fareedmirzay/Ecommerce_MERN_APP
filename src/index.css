@@ -5,29 +5,41 @@
 
 
 
-a.active hr{
-    display: black;
+a.active hr {
+  display: block;
+  background-color: #333; 
+  height: 2px;
+  width: 100%;
 }
 
-
-*{
-    font-family: Outfit;
+* {
+  font-family: "Inter", sans-serif; 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.prata-regular {
-    font-family: "Prata", serif;
-    font-weight: 400;
-    font-style: normal;
-  }
+.font-serif-regular {
+  font-family: "Lora", serif; 
+  font-weight: 400;
+  font-style: normal;
+}
 
-  ::-webkit-scrollbar{
-    display: none;
-  }
-  
+::-webkit-scrollbar {
+  width: 8px; 
+  background-color: transparent; 
+}
 
-  @media (max-width:640p) {
-    a.active{
-        background-color: black;
-        color: black;
-    }
+::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 10px;
+}
+
+@media (max-width: 640px) {
+  a.active {
+      background-color: #333; 
+      color: #fff; 
+      padding: 8px; 
+      border-radius: 5px; 
   }
+}
