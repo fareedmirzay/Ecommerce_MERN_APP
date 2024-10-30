@@ -1,5 +1,5 @@
 import React from 'react'
-import Hero from '../components/Hero';
+import Showcase from '../components/Showcase';
 import LatestCollection from '../components/LatestCollection';
 import OurPolicy from '../components/OurPolicy';
 import NewsLetterBox from '../components/NewsLetterBox';
@@ -7,7 +7,7 @@ import NewsLetterBox from '../components/NewsLetterBox';
 const Home = () => {
   return (
     <div>
-        <Hero />
+        <Showcase />
         <LatestCollection />
         <OurPolicy />
         <NewsLetterBox />

@@ -1,7 +1,7 @@
 import React from 'react'
 import { assets } from '../assets/assets';
 
-const Hero = () => {
+const Showcase = () => {
   return (
     <div className='flex flex-col sm:flex-row border-gray-400'>
         {/* Hero Left Side */}
@@ -21,11 +21,11 @@ const Hero = () => {
 
         {/* Hero Right-Side */}
 
-        <img className='w-full sm:w-1/2' src={assets.hero_img} alt="" />
+        <img className='w-full sm:w-1/2' src={assets.Showcase_img} alt="" />
     
       
     </div>
   )
 }
 
-export default Hero;
+export default Showcase;
