@@ -37,7 +37,7 @@ const Product = () => {
                                 key={index}
                                 className="w-[20%] sm:w-full sm:mb-3 cursor-pointer object-cover"
                                 alt=""
-                                style={{ maxHeight: '100px' }} // Thumbnails smaller
+                                style={{ maxHeight: '100px' }}
                             />
                         ))}
                     </div>
@@ -47,7 +47,7 @@ const Product = () => {
                             className="w-full h-auto object-cover"
                             src={image}
                             alt=""
-                            style={{ maxHeight: '700px' }} // Main image larger
+                            style={{ maxHeight: '700px' }} 
                         />
                     </div>
                 </div>

@@ -3,7 +3,11 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-
+/* Subtle warm gradient background */
+body {
+  background: linear-gradient(120deg, #fdfcfb 0%, #e2d1c3 100%); /* Light sand to soft beige */
+  color: #333; /* Text color for readability */
+}
 
 a.active hr {
   display: block;

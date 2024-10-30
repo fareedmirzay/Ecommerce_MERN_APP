@@ -14,17 +14,6 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Company links section */}
-        <div className='flex-1'>
-          <p className='text-xl font-medium mb-5'>COMPANY</p>
-          <ul className='flex flex-col gap-1 text-gray-600'>
-            <li>HOME</li>
-            <li>About US</li>
-            <li>Delivery</li>
-            <li>Privacy Policy</li>
-          </ul>
-        </div>
-
         {/* Get in Touch section, aligned to the right */}
         <div className='flex-1 text-right'>
           <p className='text-xl font-medium mb-5'>GET IN TOUCH</p>
