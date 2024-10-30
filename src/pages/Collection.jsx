@@ -90,7 +90,6 @@ const Collection = () => {
                     
                     {/* Product Sort */}
                     <select onChange={(e) => setSortType(e.target.value)} className='border-2 border-gray-300 text-sm px-2'>
-                        <option value="relevant">Sort by: Relevant</option>
                         <option value="low-high">Sort by: low to high</option>
                         <option value="high-low">Sort by: high to low</option>
                     </select>

@@ -20,11 +20,11 @@ const Contact = () => {
         <div className="flex flex-col justify-start space-y-4 p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 border border-indigo-200">
           <h2 className="text-3xl font-semibold text-indigo-700">OUR STORE</h2>
           <p className="text-gray-700 text-lg">
-            600 MAIN ST <br /> Suite 600, Springfield, MA
+            600 MAIN ST <br />Springfield, MA
           </p>
           <p className="text-gray-700 text-lg">
-            Tel: <span className="font-semibold">(666) 784-8342</span> <br />
-            Email: <a href="mailto:FareedMirzay@ymail.com" className="text-indigo-600 hover:underline">FareedMirzay@ymail.com</a>
+            Tel: <span className="font-semibold">(666) 666-6666</span> <br />
+            Email: <a href="mailto:FareedMirzay@ymail.com" className="text-indigo-600 hover:underline">Fareedmirzay@ymail.com</a>
           </p>
         </div>
       </div>
