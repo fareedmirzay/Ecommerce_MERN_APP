@@ -4,13 +4,18 @@ import { Link, NavLink } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContext';
 
 const Navbar = () => {
+  // State to track the visibility of the mobile menu
   const [visible, setVisible] = useState(false);
 
-  const {setShowSearch, getCartCount } = useContext(ShopContext);
+  // Accessing context methods for showing search modal and cart item count
+  const { setShowSearch, getCartCount } = useContext(ShopContext);
 
   return (
     <div className="flex items-center justify-between py-5 font-medium">
+      {/* Logo, links back to the home page */}
       <Link to='/'><img src={assets.logo} className="w-36" alt=""/></Link>
+
+      {/* Desktop navigation links */}
       <ul className="hidden sm:flex gap-5 text-sm text-gray-700">
         <NavLink to="/" className="flex flex-col items-center gap-1">
           <p>HOME</p>
@@ -30,13 +35,13 @@ const Navbar = () => {
         </NavLink>
       </ul>
 
+      {/* Icons section */}
       <div className="flex items-center gap-6">
-        {/* Search Icon */}
-        <img onClick={()=>setShowSearch(true)} src={assets.search_icon} className="w-5 cursor-pointer" alt="" />
+        {/* Search icon to open a search modal */}
+        <img onClick={() => setShowSearch(true)} src={assets.search_icon} className="w-5 cursor-pointer" alt="" />
 
-        {/* Profile and Cart Icons */}
         <div className="flex items-center gap-6">
-          {/* Profile Icon with Dropdown */}
+          {/* Profile icon with dropdown menu on hover */}
           <div className="group relative">
             <Link to='/login'><img className="w-5 cursor-pointer" src={assets.profile_icon} alt="" /></Link>
             <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
@@ -48,16 +53,16 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Cart Icon with Badge */}
+          {/* Cart icon with badge showing cart item count */}
           <Link to="/cart" className="relative">
             <img src={assets.cart_icon} className="w-5 min-w-5" alt="" />
-            {/* Badge for cart items */}
+            {/* Badge showing the number of items in the cart */}
             <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]">
-  {getCartCount()}
-</p>
+              {getCartCount()}
+            </p>
           </Link>
 
-          {/* Mobile Menu Icon */}
+          {/* Mobile menu icon only visible on small screens */}
           <img
             onClick={() => setVisible(true)}
             src={assets.menu_icon}
@@ -67,19 +72,21 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu display */}
       {visible && (
         <div className="absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all w-full">
           <div className="flex flex-col text-gray-600">
+            {/* Back button to close mobile menu */}
             <div onClick={() => setVisible(false)} className="flex items-center gap-4 p-3 cursor-pointer">
               <img className="h-4 rotate-180" src={assets.dropdown_icon} alt="back icon" />
               <p>Back</p>
             </div>
 
-            <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to="/">Home</NavLink>
-            <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to="/collection">Collection</NavLink>
-            <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to="/about">About</NavLink>
-            <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to="/contact">Contact</NavLink>
+            {/* Mobile navigation links */}
+            <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to="/">Home</NavLink>
+            <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to="/collection">Collection</NavLink>
+            <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to="/about">About</NavLink>
+            <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to="/contact">Contact</NavLink>
           </div>
         </div>
       )}

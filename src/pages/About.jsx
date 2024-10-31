@@ -6,7 +6,7 @@ import NewsLetterBox from '../components/NewsLetterBox'
 const About = () => {
   return (
     <div className="bg-gradient-to-b from-white to-gray-100 text-gray-900">
-        {/* Hero Section */}
+        {/* Showcase Section */}
         <div className="relative bg-black text-white text-center py-20">
             <h1 className="text-5xl font-bold tracking-wide mb-4">Who We Are</h1>
             <p className="text-xl font-light max-w-2xl mx-auto">We are committed to delivering high-quality products with a focus on customer satisfaction, innovation, and sustainability.</p>

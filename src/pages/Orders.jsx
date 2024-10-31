@@ -5,19 +5,23 @@ import axios from 'axios';
 
 const Orders = () => {
 
-  const { backendUrl, token , currency} = useContext(ShopContext);
+  const { backendUrl, token , currency} = useContext(ShopContext); // Destructuring values from ShopContext
 
-  const [orderData,setorderData] = useState([])
+  const [orderData,setorderData] = useState([])   // State to hold order data
 
+
+ // Function to load order data from the API
   const loadOrderData = async () => {
     try {
       if (!token) {
         return null
       }
 
+            // Send a POST request to fetch user orders
       const response = await axios.post(backendUrl + '/api/order/userorders',{},{headers:{token}})
       if (response.data.success) {
         let allOrdersItem = []
+        // Map through each order and its items to compile a list of all order items
         response.data.orders.map((order)=>{
           order.items.map((item)=>{
             item['status'] = order.status
@@ -35,6 +39,7 @@ const Orders = () => {
     }
   }
 
+   // Effect to load order data when the component mounts or the token changes
   useEffect(()=>{
     loadOrderData()
   },[token])
@@ -48,6 +53,7 @@ const Orders = () => {
 
         <div>
             {
+            // Map through the order data to render each order item
               orderData.map((item,index) => (
                 <div key={index} className='py-4 border-t border-b text-gray-700 flex flex-col md:flex-row md:items-center md:justify-between gap-4'>
                     <div className='flex items-start gap-6 text-sm'>

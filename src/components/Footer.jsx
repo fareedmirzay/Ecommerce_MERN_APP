@@ -1,12 +1,13 @@
-import React from 'react'
-import { assets } from '../assets/assets'
+import React from 'react';
+import { assets } from '../assets/assets';
 
 const Footer = () => {
   return (
     <div className="my-10 mt-40 text-sm">
-      {/* Main content with text, links, and Get in Touch section side by side */}
+      {/* Main footer content: split into text and contact sections */}
       <div className='flex flex-col sm:flex-row justify-between gap-14'>
-        {/* Main text section */}
+        
+        {/* Logo and descriptive text */}
         <div className='flex-1'>
           <img src={assets.logo} className='mb-5 w-32' alt="" />
           <p className='w-full md:w-2/3 text-gray-600'>
@@ -14,7 +15,7 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Get in Touch section, aligned to the right */}
+        {/* Contact information, displayed to the right on larger screens */}
         <div className='flex-1 text-right'>
           <p className='text-xl font-medium mb-5'>GET IN TOUCH</p>
           <ul className='flex flex-col gap-1 text-gray-600'>
@@ -24,9 +25,9 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Footer copyright */}
+      {/* Copyright section, centered and styled for separation */}
       <div className='mt-10'>
-        <hr />
+        <hr /> {/* Divider line */}
         <p className='my-5 text-sm text-center'>Copyright 2024@ AFG-STORE.com - All Rights Reserved.</p>
       </div>
     </div>
@@ -34,4 +35,3 @@ const Footer = () => {
 }
 
 export default Footer;
-
